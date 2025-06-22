@@ -1,7 +1,7 @@
 import { Link } from "react-router";
 import { PlusIcon } from "lucide-react";
 
-const Navbar = () => {
+const NavBar = () => {
   return (
     <header className="bg-base-300 border-b border-base-content/10">
       <div className="mx-auto max-w-6xl p-4">
@@ -20,4 +20,4 @@ const Navbar = () => {
     </header>
   );
 };
-export default Navbar;
+export default NavBar;
