@@ -13,28 +13,32 @@ const app = express();
 const PORT = process.env.PORT || 5001;
 const __dirname = path.resolve();
 
-//middleware for enabling CORS
-// This allows cross-origin requests, which is useful for development
-if (process.env.NODE_ENV !== "production") {
-  app.use(
-    cors({
-      origin: "http://localhost:5173",
-    })
-  );
-}
+// Configure CORS to allow requests from Chrome extensions
+app.use(
+  cors({
+    origin: function (origin, callback) {
+      // Allow requests with no origin (like mobile apps, curl requests)
+      if (!origin) return callback(null, true);
+
+      // Allow requests from your frontend and Chrome extensions
+      if (
+        origin === "http://localhost:5173" ||
+        origin.startsWith("chrome-extension://")
+      ) {
+        return callback(null, true);
+      }
+
+      callback(new Error("Not allowed by CORS"));
+    },
+    credentials: true,
+  })
+);
 
 //middleware for parsing JSON bodies
 app.use(express.json());
 
 //middleware for rate limiting
-// This will limit requests to 100 per minute per IP address
 app.use(rateLimiter);
-
-//middleware for logging requests
-// app.use((req, res, next) => {
-//   console.log(`${req.method} request for '${req.url}'`);
-//   next();
-// });
 
 app.use("/api/notes", notesRoutes);
 

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SnappyNotes</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.24/dist/full.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        daisyui: {
+          themes: ["forest"],
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body data-theme="forest">
+    <div class="min-h-full bg-base-200 w-96">
+      <div class="container mx-auto px-4 py-4">
+        <div class="max-w-full mx-auto">
+          <div class="card bg-base-100">
+            <div class="card-body">
+              <h2 class="card-title text-2xl mb-4">Create New Note</h2>
+              <form id="noteForm">
+                <div class="form-control mb-4">
+                  <label class="label">
+                    <span class="label-text">Title</span>
+                  </label>
+                  <input
+                    type="text"
+                    id="title"
+                    placeholder="Note Title"
+                    class="input input-bordered"
+                    required
+                  />
+                </div>
+
+                <div class="form-control mb-4">
+                  <label class="label">
+                    <span class="label-text">Content</span>
+                  </label>
+                  <textarea
+                    id="content"
+                    placeholder="Write your note here..."
+                    class="textarea textarea-bordered h-32"
+                    required
+                  ></textarea>
+                </div>
+
+                <div class="card-actions justify-end">
+                  <button type="submit" id="submitBtn" class="btn btn-primary">
+                    Create Note
+                  </button>
+                </div>
+              </form>
+              <div id="status" class="mt-4 text-center hidden"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="popup.js"></script>
+  </body>
+</html>

@@ -1,0 +1,20 @@
+body {
+  width: 400px;
+  min-height: 300px;
+}
+
+.bg-base-200 {
+  background: radial-gradient(125% 125% at 50% 10%, #000 60%, #00ff9d40 100%);
+}
+
+.border-primary {
+  border-color: #00ff9d;
+}
+
+#status.success {
+  color: #00ff9d;
+}
+
+#status.error {
+  color: #ff5555;
+}
