@@ -3,10 +3,16 @@ document.addEventListener("DOMContentLoaded", function () {
   const submitBtn = document.getElementById("submitBtn");
   const statusDiv = document.getElementById("status");
 
-  // Get the API URL - use your production URL in the final version
-  // For development, use your local server
-  const API_URL = "https://snappynotes.onrender.com/api/notes";
-  // const API_URL = "http://localhost:5001/api/notes"; // For local development
+  // Get the API URL - dynamically determine based on environment
+  // For production, use the deployed URL
+  // For development, use localhost
+  const isLocalhost =
+    window.location.hostname === "localhost" ||
+    window.location.hostname === "127.0.0.1";
+
+  const API_URL = isLocalhost
+    ? "http://localhost:5001/api/notes"
+    : "https://snappynotes.onrender.com/api/notes";
 
   form.addEventListener("submit", async function (e) {
     e.preventDefault();

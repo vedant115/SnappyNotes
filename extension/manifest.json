@@ -12,6 +12,10 @@
     }
   },
   "permissions": ["activeTab"],
+  "host_permissions": [
+    "http://localhost:5001/*",
+    "https://snappynotes.onrender.com/*"
+  ],
   "content_security_policy": {
     "extension_pages": "script-src 'self'; object-src 'self'"
   }

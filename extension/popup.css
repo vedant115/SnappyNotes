@@ -18,3 +18,7 @@ body {
 #status.error {
   color: #ff5555;
 }
+
+.card-actions {
+  margin-top: 10px;
+}
